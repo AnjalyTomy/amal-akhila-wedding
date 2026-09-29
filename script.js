@@ -43,13 +43,91 @@ function initFogOverlay() {
   }, 1200);
 }
 
+function initGalleryAutoScroll() {
+  const gallery = document.getElementById('venueGalleryScroll');
+  if (!gallery) return;
 
+  let isUserInteracting = false;
+  let resumeTimer = null;
+  const speed = 0.8; // px per frame
 
+  // Seamless loop: when scrolled past halfway (duplicate items), reset
+  function loopScroll() {
+    const halfWidth = gallery.scrollWidth / 2;
+    if (gallery.scrollLeft >= halfWidth) {
+      gallery.scrollLeft -= halfWidth;
+    }
+  }
+
+  // Auto-scroll with requestAnimationFrame
+  function autoScroll() {
+    if (!isUserInteracting) {
+      gallery.scrollLeft += speed;
+      loopScroll();
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  function pauseScroll() {
+    isUserInteracting = true;
+    clearTimeout(resumeTimer);
+  }
+
+  function resumeScroll() {
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { isUserInteracting = false; }, 2500);
+  }
+
+  // Mouse drag support
+  let isDragging = false;
+  let startX = 0;
+  let scrollStart = 0;
+
+  gallery.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    scrollStart = gallery.scrollLeft;
+    pauseScroll();
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    gallery.scrollLeft = scrollStart - (e.pageX - startX);
+    loopScroll();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      resumeScroll();
+    }
+  });
+
+  // Touch support
+  gallery.addEventListener('touchstart', () => { pauseScroll(); }, { passive: true });
+  gallery.addEventListener('touchend', () => { resumeScroll(); }, { passive: true });
+
+  // Scroll wheel support
+  gallery.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > 0 || Math.abs(e.deltaY) > 0) {
+      pauseScroll();
+      gallery.scrollLeft += e.deltaY || e.deltaX;
+      loopScroll();
+      resumeScroll();
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  requestAnimationFrame(autoScroll);
+}
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initFogOverlay();
+    initGalleryAutoScroll();
   });
 } else {
   initFogOverlay();
+  initGalleryAutoScroll();
 }

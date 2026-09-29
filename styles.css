@@ -1218,7 +1218,7 @@ a {
   opacity: 1;
 }
 
-/* Scrollable Image Gallery in Venue Section — CSS Marquee Auto-Scroll */
+/* Scrollable Image Gallery in Venue Section — Auto + Manual Scroll */
 .venue-gallery-wrap {
   position: relative;
   width: 100%;
@@ -1233,22 +1233,20 @@ a {
 .venue-gallery-scroll {
   display: flex;
   gap: 20px;
-  width: max-content;
-  padding: 10px 0 20px;
-  animation: gallery-marquee 28s linear infinite;
+  overflow-x: auto;
+  padding: 10px 20px 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
 }
 
-.venue-gallery-scroll:hover {
-  animation-play-state: paused;
+.venue-gallery-scroll:active {
+  cursor: grabbing;
 }
 
-@keyframes gallery-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.venue-gallery-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .venue-gallery-item {
