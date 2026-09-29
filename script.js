@@ -27,19 +27,20 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('Intersec
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   revealElements.forEach(element => observer.observe(element));
 }
 
 function initFogOverlay() {
   const fog = document.getElementById('fogOverlay');
   if (!fog) return;
+  // Keep fog visible for 1.2s to show misty veil, then smoothly fade out
   setTimeout(() => {
     fog.classList.add('fade-out');
     setTimeout(() => {
       fog.style.display = 'none';
-    }, 1800);
-  }, 600);
+    }, 2200);
+  }, 1200);
 }
 
 if (document.readyState === 'loading') {
