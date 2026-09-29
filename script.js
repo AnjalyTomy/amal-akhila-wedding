@@ -43,30 +43,13 @@ function initFogOverlay() {
   }, 1200);
 }
 
-function initGalleryAutoScroll() {
-  const gallery = document.getElementById('venueGalleryScroll');
-  if (!gallery) return;
-  let isHovered = false;
-  gallery.addEventListener('mouseenter', () => isHovered = true);
-  gallery.addEventListener('mouseleave', () => isHovered = false);
-  gallery.addEventListener('touchstart', () => isHovered = true, { passive: true });
-  gallery.addEventListener('touchend', () => setTimeout(() => isHovered = false, 2500), { passive: true });
 
-  setInterval(() => {
-    if (isHovered) return;
-    gallery.scrollLeft += 1;
-    if (gallery.scrollLeft >= (gallery.scrollWidth - gallery.clientWidth - 4)) {
-      gallery.scrollLeft = 0;
-    }
-  }, 22);
-}
+
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initFogOverlay();
-    initGalleryAutoScroll();
   });
 } else {
   initFogOverlay();
-  initGalleryAutoScroll();
 }
