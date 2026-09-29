@@ -49,17 +49,15 @@ function initGalleryAutoScroll() {
 
   let isUserInteracting = false;
   let resumeTimer = null;
-  const speed = 0.8; // px per frame
+  const speed = 0.8;
 
-  // Seamless loop: when scrolled past halfway (duplicate items), reset
   function loopScroll() {
     const halfWidth = gallery.scrollWidth / 2;
-    if (gallery.scrollLeft >= halfWidth) {
+    if (halfWidth > 0 && gallery.scrollLeft >= halfWidth) {
       gallery.scrollLeft -= halfWidth;
     }
   }
 
-  // Auto-scroll with requestAnimationFrame
   function autoScroll() {
     if (!isUserInteracting) {
       gallery.scrollLeft += speed;
@@ -78,7 +76,7 @@ function initGalleryAutoScroll() {
     resumeTimer = setTimeout(() => { isUserInteracting = false; }, 2500);
   }
 
-  // Mouse drag support
+  // ── Mouse drag ──
   let isDragging = false;
   let startX = 0;
   let scrollStart = 0;
@@ -104,19 +102,33 @@ function initGalleryAutoScroll() {
     }
   });
 
-  // Touch support
-  gallery.addEventListener('touchstart', () => { pauseScroll(); }, { passive: true });
-  gallery.addEventListener('touchend', () => { resumeScroll(); }, { passive: true });
+  // ── Touch drag (mobile swipe) ──
+  let touchStartX = 0;
+  let touchScrollStart = 0;
 
-  // Scroll wheel support
+  gallery.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].pageX;
+    touchScrollStart = gallery.scrollLeft;
+    pauseScroll();
+  }, { passive: true });
+
+  gallery.addEventListener('touchmove', (e) => {
+    const dx = touchStartX - e.touches[0].pageX;
+    gallery.scrollLeft = touchScrollStart + dx;
+    loopScroll();
+  }, { passive: true });
+
+  gallery.addEventListener('touchend', () => {
+    resumeScroll();
+  }, { passive: true });
+
+  // ── Mouse wheel ──
   gallery.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaX) > 0 || Math.abs(e.deltaY) > 0) {
-      pauseScroll();
-      gallery.scrollLeft += e.deltaY || e.deltaX;
-      loopScroll();
-      resumeScroll();
-      e.preventDefault();
-    }
+    pauseScroll();
+    gallery.scrollLeft += e.deltaY || e.deltaX;
+    loopScroll();
+    resumeScroll();
+    e.preventDefault();
   }, { passive: false });
 
   requestAnimationFrame(autoScroll);
