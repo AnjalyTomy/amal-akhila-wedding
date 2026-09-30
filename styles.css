@@ -246,6 +246,37 @@ a {
   background: currentColor;
 }
 
+.hero-gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 12px 28px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: var(--hero-ink);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background .35s ease, border-color .35s ease, transform .3s ease;
+  opacity: 0;
+  animation: hero-text-in 1s cubic-bezier(.16, 1, .3, 1) 4.1s both;
+}
+
+.hero-gallery-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.hero-gallery-btn-icon {
+  display: inline-flex;
+  opacity: 0.85;
+}
+
 .scroll-cue {
   position: absolute;
   bottom: 29px;

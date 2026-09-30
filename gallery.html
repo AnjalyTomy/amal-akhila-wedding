@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Amal & Akhila</title>
+  <meta name="description" content="Photo gallery from the wedding of Amal and Akhila — 17 October 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gallery.css">
+</head>
+
+<body>
+
+  <!-- Gallery Header -->
+  <header class="gallery-header">
+    <a href="index.html" class="gallery-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      BACK
+    </a>
+    <div class="brand-mark">Amal <span>&</span> Akhila</div>
+    <span class="header-date">17 . 10 . 2026</span>
+  </header>
+
+  <!-- Gallery Hero Banner -->
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <p class="gallery-eyebrow">OUR MOMENTS</p>
+      <h1>Photo <em>Gallery</em></h1>
+      <p class="gallery-subtitle">A collection of our favourite memories together</p>
+    </div>
+  </section>
+
+  <!-- Masonry Gallery Grid -->
+  <section class="gallery-grid-section">
+    <div class="gallery-masonry">
+
+      <div class="gallery-card gallery-card--tall">
+        <img src="assets/wedding-hero.jpeg" alt="Amal and Akhila wedding portrait" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Our Day</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/wedding-couple.jpeg" alt="A couple sharing a quiet moment" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Together</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/image1.jpeg" alt="Amal and Akhila sharing a quiet moment" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Quiet Moments</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gallery-card--wide">
+        <img src="assets/image2.jpeg" alt="Amal and Akhila in a sunlit garden" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Sunlit Garden</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/wedding-detail.jpeg" alt="Ivory roses and wedding details" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Details</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gallery-card--tall">
+        <img src="assets/image3.jpeg" alt="Wedding rings and roses" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Rings & Roses</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/image4.jpeg" alt="Wedding celebration" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Celebration</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gallery-card--wide">
+        <img src="assets/ring.jpg" alt="Wedding rings" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Forever Ours</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/bouquet.jpg" alt="Wedding bouquet" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Bouquet</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/cake.jpg" alt="Wedding cake" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Sweet Moments</span>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <img src="assets/footer.jpeg" alt="Amal and Akhila" loading="lazy">
+        <div class="gallery-card-overlay">
+          <span class="gallery-card-caption">Always Us</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 6 15 12 9 18" />
+      </svg>
+    </button>
+    <img class="lightbox-img" id="lightboxImg" alt="" src="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="gallery-footer">
+    <span>AMAL & AKHILA</span>
+    <span>17 OCTOBER 2026</span>
+    <a href="index.html">← BACK TO INVITATION</a>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const cards = document.querySelectorAll('.gallery-card');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      cards.forEach(c => obs.observe(c));
+    } else {
+      cards.forEach(c => c.classList.add('is-visible'));
+    }
+
+    // Lightbox
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const images = Array.from(document.querySelectorAll('.gallery-card img'));
+    const captions = Array.from(document.querySelectorAll('.gallery-card-caption'));
+    let currentIdx = 0;
+
+    function openLightbox(idx) {
+      currentIdx = idx;
+      lightboxImg.src = images[idx].src;
+      lightboxCaption.textContent = captions[idx].textContent;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      currentIdx = (currentIdx + dir + images.length) % images.length;
+      lightboxImg.src = images[currentIdx].src;
+      lightboxCaption.textContent = captions[currentIdx].textContent;
+    }
+
+    cards.forEach((card, i) => {
+      card.addEventListener('click', () => openLightbox(i));
+      card.style.cursor = 'pointer';
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => navLightbox(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => navLightbox(1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
+
+</body>
+
+</html>
