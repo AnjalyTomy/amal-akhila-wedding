@@ -77,6 +77,14 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
